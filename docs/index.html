@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一键周报生成器 - AI 周报工具</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, 'Microsoft YaHei', sans-serif; background: #f0f4f8; color: #2d3436; line-height: 1.6; }
+        .hero { background: linear-gradient(135deg, #1B3A5C, #2B7A78); color: #fff; padding: 80px 20px; text-align: center; }
+        .hero h1 { font-size: 2.8em; margin-bottom: 16px; }
+        .hero p { font-size: 1.2em; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        .card { background: #fff; border-radius: 12px; padding: 30px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .card h2 { color: #1B3A5C; margin-bottom: 16px; font-size: 1.5em; }
+        .card h2::before { content: "▎"; color: #2B7A78; }
+        code { background: #eef; padding: 2px 8px; border-radius: 4px; font-size: 0.9em; }
+        pre { background: #1e1e2e; color: #cdd6f4; padding: 20px; border-radius: 8px; overflow-x: auto; margin: 16px 0; font-size: 0.9em; }
+        .btn { display: inline-block; background: #2B7A78; color: #fff; padding: 12px 32px; border-radius: 8px; text-decoration: none; font-size: 1.1em; margin: 8px; transition: 0.3s; }
+        .btn:hover { background: #1B3A5C; transform: translateY(-2px); }
+        .btn-outline { background: transparent; border: 2px solid #fff; }
+        .btn-outline:hover { background: rgba(255,255,255,0.1); }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .feature-item { background: #f8fafc; padding: 20px; border-radius: 8px; border-left: 3px solid #2B7A78; }
+        .feature-item h3 { color: #1B3A5C; margin-bottom: 8px; }
+        .donate { text-align: center; padding: 20px; }
+        .donate img { width: 200px; border-radius: 8px; margin: 16px 0; }
+        .steps { counter-reset: step; }
+        .step { margin: 16px 0; padding: 16px; background: #f8fafc; border-radius: 8px; }
+        .step::before { counter-increment: step; content: "步骤 " counter(step) " → "; color: #2B7A78; font-weight: bold; }
+        footer { text-align: center; padding: 40px; color: #636e72; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>📋 一键周报生成器</h1>
+        <p>AI 整理工作记录 → 专业 DOCX 周报 · 永久免费 · 零成本运行</p>
+        <p style="margin-top:24px">
+            <a href="https://github.com/zero00004/weekly-report-builder" class="btn">🐙 GitHub 仓库</a>
+            <a href="#quickstart" class="btn btn-outline">🚀 快速开始</a>
+        </p>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>✨ 功能特点</h2>
+            <div class="features">
+                <div class="feature-item"><h3>🧠 AI 整理</h3>使用 GLM-4-Flash 免费模型，智能结构化内容</div>
+                <div class="feature-item"><h3>📄 专业排版</h3>自动生成格式规范的 DOCX 周报</div>
+                <div class="feature-item"><h3>💰 永久免费</h3>模型调用和工具使用完全免费</div>
+                <div class="feature-item"><h3>🔒 数据隐私</h3>你的数据只会传给智谱 API，不留存</div>
+            </div>
+        </div>
+
+        <div class="card" id="quickstart">
+            <h2>🚀 快速开始</h2>
+            <div class="steps">
+                <div class="step">安装 Python（3.8+）</div>
+                <div class="step"><code>pip install python-docx requests</code></div>
+                <div class="step"><code>git clone https://github.com/zero00004/weekly-report-builder.git</code></div>
+                <div class="step"><code>cd weekly-report-builder && python report_builder.py --demo</code></div>
+            </div>
+            <p style="margin-top:16px">就是这么简单！运行后会在当前目录生成 <code>周报_日期.docx</code>。</p>
+        </div>
+
+        <div class="card">
+            <h2>📝 使用示例</h2>
+            <p>把每天的工作记录下来，然后交给 AI：</p>
+            <pre>周一：开会讨论项目进度，修改了登录页面的bug
+周二：完成了用户管理模块的开发，写了单元测试
+周三：和产品经理对接新需求，评估了工作量
+周四：解决了分页查询的性能问题（加了索引速度提升10倍）
+周五：部署了新版本到测试环境</pre>
+            <p>↓ AI 自动整理成周报 ↓</p>
+            <pre style="border:2px solid #2B7A78">
+本周工作内容：
+1. 完成用户管理模块开发及单元测试覆盖
+2. 修复登录页面 Bug
+3. 解决分页查询性能问题（优化后速度提升 10 倍）
+4. 完成新版本测试环境部署
+
+重点项目/成果：
+- 性能优化：通过数据库索引优化，查询速度提升 10 倍
+
+下周计划：
+- 继续推进搜索功能开发
+- 编写技术设计文档</pre>
+        </div>
+
+        <div class="card">
+            <h2>📄 输出效果</h2>
+            <p>生成的周报包含：标题区 · 基本信息 · 本周工作 · 重点项目 · 问题解决 · 下周计划 · 签名区</p>
+            <p>标准 A4 排版，直接打印或提交给领导。</p>
+        </div>
+
+        <div class="card donate">
+            <h2>☕ 赞赏支持</h2>
+            <p>如果这个工具帮你省了时间，欢迎请我喝杯咖啡 ❤️</p>
+            <img src="../donate.jpg" alt="微信赞赏码">
+            <p style="color:#636e72;font-size:0.9em">每一份支持都是持续开发的动力 🙏</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>MIT License · Built with ❤️ · <a href="https://github.com/zero00004/weekly-report-builder">GitHub</a></p>
+    </footer>
+</body>
+</html>
