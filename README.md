@@ -52,3 +52,4 @@ AI 自动整理后生成专业周报。
 ## License
 
 MIT
+# test push ability - can be deleted
